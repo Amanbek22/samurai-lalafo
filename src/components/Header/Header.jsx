@@ -5,10 +5,10 @@ const Header = () => {
   return (
     <div className={css.wrapper}>
         <Link to="/">
-            <h2>LOGO</h2>
+            <h2>Lalalfo</h2>
         </Link>
         <div>
-            <Link to="/login">Войти</Link>
+            <Link to="/login">Login</Link>
         </div>
     </div>
   )
