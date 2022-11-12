@@ -1,17 +1,28 @@
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
+import DashboardPage from './pages/DashboardPage/DashboardPage';
 import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 
 function App() {
+  const [houses, setHouses] = useState([]);
+
+  useEffect(() => {
+    fetch("https://605b21f027f0050017c063b9.mockapi.io/api/v3/houses")
+      .then((res) => res.json())
+      .then((data) => setHouses(data))
+  }, []);
+
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage houses={houses} />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/page3" element={<h1>Page 3</h1>} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/create" element={<h1>Page Create ad</h1>} />
       </Routes>
     </div>
   );

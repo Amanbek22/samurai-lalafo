@@ -6,3 +6,29 @@
 .container {
   padding: 40px 100px;
 }
+
+.cardsWrapper {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  grid-gap: 25px;
+}
+
+.btn {
+  font-size: 18px;
+  padding: 10px 15px;
+  background: rgb(37, 138, 253);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.danger {
+  background: rgb(254, 85, 85);
+}
+
+.error {
+  color: red;
+}
