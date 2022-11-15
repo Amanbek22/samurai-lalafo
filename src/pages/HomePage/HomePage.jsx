@@ -8,7 +8,7 @@ const HomePage = ( { houses } ) => {
         <Title position="center">Последние объявления</Title>
         <div className={"cardsWrapper"}>
           {
-            houses.map((item) => <Card {...item} />)
+            houses.map((item) => <Card key={item.id} {...item} />)
           }
         </div>
     </div>
