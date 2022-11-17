@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import AdPage from './pages/AdPage/AdPage';
+import CreateAdPage from './pages/CreateAdPage/CreateAdPage';
 import DashboardPage from './pages/DashboardPage/DashboardPage';
 import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
@@ -23,8 +24,8 @@ function App() {
         <Route path="/" element={<HomePage houses={houses} />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard" element={<DashboardPage houses={houses} />} />
-        <Route path="/create" element={<h1>Page Create ad</h1>} />
         <Route path="/ad/:id" element={<AdPage />} />
+        <Route path="/create" element={<CreateAdPage />} />
       </Routes>
     </div>
   );

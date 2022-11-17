@@ -6,6 +6,19 @@
 .container {
   padding: 40px 100px;
 }
+.d-flex {
+  display: flex;
+  grid-gap: 15px;
+}
+
+.d-grid {
+  display: grid;
+  grid-gap: 10px;
+}
+.inp {
+  padding: 10px;
+  font-size: 16px;
+}
 
 .cardsWrapper {
   margin-top: 50px;
@@ -23,6 +36,8 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
 }
 
 .danger {
