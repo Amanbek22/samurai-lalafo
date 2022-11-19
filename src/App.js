@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import API from './api/Api';
 import './App.css';
 import Header from './components/Header/Header';
 import AdPage from './pages/AdPage/AdPage';
@@ -12,9 +13,18 @@ function App() {
   const [houses, setHouses] = useState([]);
 
   useEffect(() => {
-    fetch("https://605b21f027f0050017c063b9.mockapi.io/api/v3/houses")
-      .then((res) => res.json())
-      .then((data) => setHouses(data))
+    API.getAllAds()
+      .then((res) => setHouses(res.data))
+
+    // Api.get('houses')
+    //   .then((res) => setHouses(res.data))
+
+    // axios.get(base_url + "houses")
+    //   .then((res) => setHouses(res.data))
+
+    // fetch(base_url + "houses")
+    //   .then((res) => res.json())
+    //   .then((data) => setHouses(data))
   }, []);
 
   return (

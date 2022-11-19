@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API from "../../api/Api";
 import Title from "../../components/Title/Title";
 
 function CreateAdPage() {
@@ -13,22 +14,15 @@ function CreateAdPage() {
   const submit = (e) => {
     e.preventDefault();
     const data = {
-        title: title,
-        price: price,
-        desciption: desc,
-        imgUrl: img
-    }
-    fetch("https://605b21f027f0050017c063b9.mockapi.io/api/v3/houses", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-        .then(() => {
-            navigate("/dashboard")
-        })
-  }
+      title: title,
+      price: price,
+      desciption: desc,
+      imgUrl: img,
+    };
+    API.createAd(data).then(() => {
+      navigate("/dashboard");
+    });
+  };
 
   return (
     <div className="container">

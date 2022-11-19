@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import { base_url } from "../../constants";
+import API from "../../api/Api";
 
 const images = [
   "https://www.bhg.com/thmb/0Fg0imFSA6HVZMS2DFWPvjbYDoQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg",
@@ -14,23 +16,16 @@ function AdPage() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch(`https://605b21f027f0050017c063b9.mockapi.io/api/v3/houses/${id}`)
+    API.getById(id)
       .finally(() => {
         setLoading(false);
       })
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-      });
+      .then((res) => setData(res.data))
   }, [id]);
 
   if (isLoading || data === null) {
     return <h1>...Loading</h1>;
   }
-  //   TODO: fix in lesson
-  //   if(data === null) {
-  //     return <h1></h1>
-  //   }
   return (
     <div className="container d-flex">
       <div>
