@@ -1,7 +1,9 @@
+import { useSelector } from "react-redux";
 import Card from "../../components/Card/Card";
 import Title from "../../components/Title/Title";
 
-const HomePage = ( { houses } ) => {
+const HomePage = () => {
+  const houses = useSelector((state) => state.data );
   return (
     <div className="container">
         <Title position="center">Последние объявления</Title>

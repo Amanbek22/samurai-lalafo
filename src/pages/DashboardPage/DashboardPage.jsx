@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import Card from "../../components/Card/Card";
 import Title from "../../components/Title/Title";
+import { useSelector } from "react-redux";
 
+const DashboardPage = () => {
+  const houses = useSelector((state) => state.data );
 
-const DashboardPage = ({ houses }) => {
   return (
     <div className="container">
         <Title position="center">Мои объявления</Title>
