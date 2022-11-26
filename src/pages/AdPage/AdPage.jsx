@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
-import { base_url } from "../../constants";
 import API from "../../api/Api";
 
 const images = [
@@ -30,9 +29,9 @@ function AdPage() {
     <div className="container d-flex">
       <div>
         <Carousel width={'600px'}>
-          <img src={data.imgUrl} alt="" />
+          <img src={data.imgUrl} alt="#" />
           {
-            images.map((item) => <img src={item} />)
+            images.map((item) => <img src={item} alt="#" />)
           }
          </Carousel>
       </div>

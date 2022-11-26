@@ -9,7 +9,7 @@ import CreateAdPage from "./pages/CreateAdPage/CreateAdPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import { housesSliceActions } from "./redux";
+import { housesSliceActions } from "./redux/houseSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function App() {
     API.getAllAds().then((res) => {
       dispatch(housesSliceActions.addHouses(res.data));
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">

@@ -4,7 +4,7 @@ import Title from "../../components/Title/Title";
 import { useSelector } from "react-redux";
 
 const DashboardPage = () => {
-  const houses = useSelector((state) => state.data );
+  const houses = useSelector((state) => state.houses.data );
 
   return (
     <div className="container">

@@ -3,7 +3,7 @@ import Card from "../../components/Card/Card";
 import Title from "../../components/Title/Title";
 
 const HomePage = () => {
-  const houses = useSelector((state) => state.data );
+  const houses = useSelector((state) => state.houses.data );
   return (
     <div className="container">
         <Title position="center">Последние объявления</Title>

@@ -1,17 +1,21 @@
 import { useState } from "react";
 import Title from "../../components/Title/Title";
 import {useNavigate} from "react-router-dom" 
+import { useDispatch } from "react-redux";
+import { authSliceActions } from "../../redux/authSlice";
 
 function LoginPage() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [isError, setError] = useState(false);
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const submit = (e) => {
     e.preventDefault();
     if(login === 'admin' && password === 'admin') {
+      dispatch( authSliceActions.login() )
       navigate("/dashboard")
     } else {
       setError(true)
