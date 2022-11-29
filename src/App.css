@@ -39,6 +39,10 @@
   text-align: center;
   text-decoration: none;
 }
+.btn:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
 
 .danger {
   background: rgb(254, 85, 85);

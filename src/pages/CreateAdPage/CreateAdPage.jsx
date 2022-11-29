@@ -1,25 +1,32 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import API from "../../api/Api";
 import Title from "../../components/Title/Title";
+import { housesSliceActions } from "../../redux/houseSlice";
 
 function CreateAdPage() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [price, setPrice] = useState("");
   const [img, setImg] = useState("");
+  const [isSending, setSending] = useState(false)
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const submit = (e) => {
     e.preventDefault();
+    setSending(true)
     const data = {
       title: title,
       price: price,
       desciption: desc,
       imgUrl: img,
     };
-    API.createAd(data).then(() => {
+    API.createAd(data)
+    .then((res) => {
+      dispatch(housesSliceActions.addHouse(res.data));
       navigate("/dashboard");
     });
   };
@@ -56,7 +63,7 @@ function CreateAdPage() {
           placeholder="Image"
           type="text"
         />
-        <button className="btn">+Создать</button>
+        <button disabled={isSending} className="btn">+Создать</button>
       </form>
     </div>
   );
