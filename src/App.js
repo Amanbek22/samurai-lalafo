@@ -10,6 +10,8 @@ import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { housesSliceActions } from "./redux/houseSlice";
+import PrivateRoute from "./routes/PrivateRoute";
+import PublicRoute from "./routes/PublicRoute";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,10 +27,31 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <DashboardPage />
+            </PrivateRoute>
+          }
+        />
         <Route path="/ad/:id" element={<AdPage />} />
-        <Route path="/create" element={<CreateAdPage />} />
+        <Route
+          path="/create"
+          element={
+            <PrivateRoute>
+              <CreateAdPage />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </div>
   );
