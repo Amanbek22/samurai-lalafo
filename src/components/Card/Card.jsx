@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import API from "../../api/Api";
-import { housesSliceActions } from "../../redux/houseSlice";
+import { deleteCardById } from "../../redux/houseSlice";
 import css from "./Card.module.css";
 
 function Card({ id, imgUrl, title, price, isAdmin }) {
@@ -11,11 +10,7 @@ function Card({ id, imgUrl, title, price, isAdmin }) {
   const onDelete = () => {
     const res = window.confirm("Удалить?");
     if (res) {
-      API.deleteAdById(id).then(() => {
-        alert("Вы успешно удалили " + id);
-        // window.location.reload();
-        dispatch(housesSliceActions.deleteHouse(id))
-      });
+      dispatch( deleteCardById(id) )
     }
   };
   return (

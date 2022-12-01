@@ -1,27 +1,27 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import API from "./api/Api";
 import "./App.css";
 import Header from "./components/Header/Header";
+import Preloader from "./components/Loader/Loader";
 import AdPage from "./pages/AdPage/AdPage";
 import CreateAdPage from "./pages/CreateAdPage/CreateAdPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import { housesSliceActions } from "./redux/houseSlice";
+import { initialize } from "./redux/houseSlice";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 
 function App() {
   const dispatch = useDispatch();
+  const isLoading = useSelector( (state) => state.houses.loading )
 
   useEffect(() => {
-    API.getAllAds().then((res) => {
-      dispatch(housesSliceActions.addHouses(res.data));
-    });
+    dispatch( initialize() )
   }, [dispatch]);
 
+  if(isLoading) return <Preloader full />
   return (
     <div className="App">
       <Header />
