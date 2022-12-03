@@ -15,7 +15,7 @@ const Header = () => {
         <Link to="/">
             <h2>Lalalfo</h2>
         </Link>
-        <div>
+        <div className={css.h-flex}>
           {
             auth 
               ? <>
