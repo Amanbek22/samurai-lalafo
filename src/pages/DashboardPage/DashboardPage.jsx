@@ -9,7 +9,7 @@ const DashboardPage = () => {
   return (
     <div className="container">
         <Title position="center">Мои объявления</Title>
-        <Link to="/create" className="btn">+Добавить</Link>
+        <Link to="/create" className="btn">Добавить</Link>
         <div className="cardsWrapper">
             {houses.map((item) => <Card key={item.id} isAdmin {...item} />)}
         </div>
