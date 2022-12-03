@@ -27,3 +27,6 @@
   overflow: hidden; 
   text-overflow: ellipsis;
 }
+.btn{
+  background-color: purple;
+}
