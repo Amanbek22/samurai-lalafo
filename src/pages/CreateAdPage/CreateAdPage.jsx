@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import API from "../../api/Api";
 import Title from "../../components/Title/Title";
-import { housesSliceActions } from "../../redux/houseSlice";
+import { addHouse } from "../../redux/houseSlice";
 
 function CreateAdPage() {
   const [title, setTitle] = useState("");
@@ -24,11 +23,10 @@ function CreateAdPage() {
       desciption: desc,
       imgUrl: img,
     };
-    API.createAd(data)
-    .then((res) => {
-      dispatch(housesSliceActions.addHouse(res.data));
-      navigate("/dashboard");
-    });
+    dispatch(addHouse(data))
+    .then(() => {
+      navigate("/dashboard")
+    })
   };
 
   return (

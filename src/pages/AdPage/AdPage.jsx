@@ -31,7 +31,7 @@ function AdPage() {
         <Carousel width={'600px'}>
           <img src={data.imgUrl} alt="#" />
           {
-            images.map((item) => <img src={item} alt="#" />)
+            images.map((item) => <img key={item} src={item} alt="#" />)
           }
          </Carousel>
       </div>
